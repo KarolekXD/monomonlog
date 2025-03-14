@@ -12,21 +12,21 @@
         async function loadMessage() {
             const res = await fetch('/api/getMessage');
             const data = await res.json();
-            document.getElementById("messageArea").value = data.message || 'Do tell';
+            document.getElementById("messageArea").value = data.message;
         }
 
         async function saveMessage() {
             const message = document.getElementById("messageArea").value;
             await fetch('/api/updateMessage', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message })
             });
         }
 
-        document.addEventListener("DOMContentLoaded", loadMessage());
+        document.addEventListener("DOMContentLoaded", loadMessage);
         const button = document.getElementById("saveButton");
-        button.addEventListener('click', saveMessage());
+        button.addEventListener('click', saveMessage);
     </script>
 </body>
 </html>
