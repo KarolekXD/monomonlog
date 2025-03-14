@@ -15,7 +15,18 @@
             document.getElementById("messageArea").value = data.message || 'Do tell';
         }
 
-        document.addEventListener("DOMContentLoaded", loadMessage())
+        async function saveMessage() {
+            const message = document.getElementById("messageArea").value;
+            await fetch('/api/updateMessage', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({ message })
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadMessage());
+        const button = document.getElementById("saveButton");
+        button.addEventListener('click', saveMessage());
     </script>
 </body>
 </html>
