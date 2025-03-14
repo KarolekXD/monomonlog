@@ -12,10 +12,10 @@
         async function loadMessage() {
             const res = await fetch('/api/getMessage');
             const data = await res.json();
-            document.getElementById("messageArea").value = data.greeting || 'Do tell';
+            document.getElementById("messageArea").value = data.message || 'Do tell';
         }
 
-        document.addEventListener("DOMContentLoaded", loadMessage)
+        document.addEventListener("DOMContentLoaded", loadMessage())
     </script>
 </body>
 </html>
