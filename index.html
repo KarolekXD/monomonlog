@@ -8,8 +8,10 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
-    <textarea name="messageArea" id="messageArea" rows="50" cols="70"></textarea>
-    <button id="saveButton">Save</button>
+    <main>
+        <textarea name="messageArea" id="messageArea" rows="50" cols="70"></textarea>
+        <button id="saveButton">Save</button>
+    </main>
     <script>
         async function loadMessage() {
             const res = await fetch('/api/getMessage');
