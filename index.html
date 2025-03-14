@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monomon Log</title>
+</head>
+<body>
+    <textarea name="messageArea" id="messageArea" rows 50 cols="70"></textarea>
+    <button id="saveButton">Save</button>
+    <script>
+        async function loadMessage() {
+            const res = await fetch('/api/getMessage');
+            const data = await res.json();
+            document.getElementById("messageBox").value = data.greeting || 'Do tell';
+        }
 
+        document.addEventListener("DOMContentLoaded", loadMessage)
+    </script>
+</body>
+</html>
