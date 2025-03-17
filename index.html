@@ -21,11 +21,16 @@
 
         async function saveMessage() {
             const message = document.getElementById("messageArea").value;
-            await fetch('/api/updateMessage', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message })
-            });
+            const currentDBmessage = await fetch("/api/getMessage");
+            currentDBmessage = await currentDBmessage.json();
+            if (message != currentDBmessage.message) {
+                await fetch('/api/updateMessage', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                document.getElementById("saveButton").disabled = true;
+            }
         }
 
         document.addEventListener("DOMContentLoaded", loadMessage);
