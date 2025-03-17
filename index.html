@@ -21,8 +21,8 @@
 
         async function saveMessage() {
             const message = document.getElementById("messageArea").value;
-            const currentDBmessage = await fetch("/api/getMessage");
-            currentDBmessage = await currentDBmessage.json();
+            const currentDBmessagejson = await fetch("/api/getMessage");
+            const currentDBmessage = await currentDBmessagejson.json();
             if (message != currentDBmessage.message) {
                 await fetch('/api/updateMessage', {
                     method: 'POST',
@@ -30,10 +30,7 @@
                     body: JSON.stringify({ message })
                 });
                 button.disabled = true;
-            }
-            console.log(message);
-            console.log(currentDBmessage);
-            
+            } 
         }
 
         document.addEventListener("DOMContentLoaded", loadMessage);
